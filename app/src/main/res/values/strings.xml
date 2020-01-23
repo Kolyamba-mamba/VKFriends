@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">VKFriends</string>
+    <string name="login_hello">Вас приветствует приложение VKFriends! \n Пожалуйста нажмите кнопку Войти, чтобы увидеть своих друзей</string>
+    <string name="login_enter">Войти</string>
+</resources>
