@@ -44,6 +44,7 @@ dependencies {
     //MoxyMVP
     def moxyVersion = "2.0.2"
     implementation "com.github.moxy-community:moxy:$moxyVersion"
+    implementation "com.github.moxy-community:moxy-androidx:$moxyVersion"
     kapt "com.github.moxy-community:moxy-compiler:$moxyVersion"
 
     //Dagger
@@ -51,6 +52,10 @@ dependencies {
     api "com.google.dagger:dagger-android:$daggerVersion"
     api "com.google.dagger:dagger-android-support:$daggerVersion" // if you use the support libraries
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+
+    // UI
+    def materialVersion = "1.0.0"
+    implementation "com.google.android.material:material:$materialVersion"
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

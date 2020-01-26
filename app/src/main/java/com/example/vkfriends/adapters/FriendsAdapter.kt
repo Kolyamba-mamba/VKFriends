@@ -9,7 +9,7 @@ import com.example.vkfriends.models.FriendModel
 
 class FriendsAdapter: RecyclerView.Adapter<FriendsAdapter.ViewHolder>() {
 
-    private var friendsList = emptyList<FriendModel>()
+    private var friendsList = ArrayList<FriendModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
