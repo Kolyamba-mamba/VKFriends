@@ -13,10 +13,26 @@ import kotlinx.android.synthetic.main.cell_friend.view.*
 class FriendsAdapter: RecyclerView.Adapter<FriendsAdapter.ViewHolder>() {
 
     private var mFriendsList: ArrayList<FriendModel> = ArrayList()
+    private var mSourceList:ArrayList<FriendModel> = ArrayList()
 
     fun setupFriends(friendsList: ArrayList<FriendModel>){
+        mSourceList.clear()
+        mSourceList.addAll(friendsList)
+        filter(query = "")
+
+    }
+
+    fun filter(query: String) {
         mFriendsList.clear()
-        mFriendsList.addAll(friendsList)
+        mSourceList.forEach {
+            if (it.name.contains(query, ignoreCase = false)|| it.surname.contains(query, ignoreCase = false)){
+                mFriendsList.add(it)
+            } else {
+                it.city?.let { city -> if (city.contains(query, ignoreCase = false)){
+                    mFriendsList.add(it)
+                }}
+            }
+        }
         notifyDataSetChanged()
     }
 
