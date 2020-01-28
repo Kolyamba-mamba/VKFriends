@@ -5,4 +5,5 @@
     <string name="friends_search_hint">Введите ваш запрос</string>
     <string name="login_error">Ошибка при попытке входа</string>
     <string name="friends_no_items">У вас нет друзей</string>
+    <string name="friend_no_city">Город не указан</string>
 </resources>

@@ -2,7 +2,11 @@ package com.example.vkfriends.activities
 
 import android.os.Bundle
 import android.view.View
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.OrientationHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.vkfriends.R
+import com.example.vkfriends.adapters.FriendsAdapter
 import com.example.vkfriends.models.FriendModel
 import com.example.vkfriends.presenters.FriendsPresenter
 import com.example.vkfriends.views.FriendsView
@@ -12,15 +16,22 @@ import moxy.presenter.InjectPresenter
 
 class FriendsActivity : MvpAppCompatActivity(), FriendsView {
 
-
     @InjectPresenter
     lateinit var friendsPresenter: FriendsPresenter
+
+    private lateinit var mAdapter: FriendsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_friends)
 
         friendsPresenter.loadFriends()
+
+        mAdapter = FriendsAdapter()
+
+        rvFriends.adapter = mAdapter
+        rvFriends.layoutManager = LinearLayoutManager(applicationContext, RecyclerView.VERTICAL,false)
+        rvFriends.setHasFixedSize(true)
     }
 
     override fun startLoading() {
@@ -48,6 +59,8 @@ class FriendsActivity : MvpAppCompatActivity(), FriendsView {
         etSearch.visibility = View.VISIBLE
         rvFriends.visibility = View.VISIBLE
         tvFriendsError.visibility = View.GONE
+
+        mAdapter.setupFriends(friendsList = friendsList)
     }
 
 }
