@@ -4,6 +4,7 @@ import com.example.vkfriends.R
 import com.example.vkfriends.models.FriendModel
 import com.example.vkfriends.prividers.FriendsProvider
 import com.example.vkfriends.views.FriendsView
+import com.vk.api.sdk.exceptions.VKApiExecutionException
 import moxy.InjectViewState
 import moxy.MvpPresenter
 
@@ -11,10 +12,10 @@ import moxy.MvpPresenter
 class FriendsPresenter:MvpPresenter<FriendsView>() {
     fun loadFriends() {
         viewState.startLoading()
-        FriendsProvider(presenter = this).testLoadFriends(true)
+        FriendsProvider(presenter = this).loadFriends()
     }
 
-    fun friendsLoaded(friendsList: ArrayList<FriendModel>){
+    fun friendsLoaded(friendsList: List<FriendModel>){
         viewState.endLoading()
         if (friendsList.isEmpty()){
             viewState.setupEmptyList()
@@ -22,5 +23,9 @@ class FriendsPresenter:MvpPresenter<FriendsView>() {
         }
         else
             viewState.setupFritndsList(friendsList = friendsList)
+    }
+
+    fun showError(error: VKApiExecutionException){
+        viewState.showError(R.string.list_error)
     }
 }

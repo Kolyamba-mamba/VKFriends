@@ -68,7 +68,7 @@ class FriendsActivity : MvpAppCompatActivity(), FriendsView {
         tvFriendsError.visibility = View.VISIBLE
     }
 
-    override fun setupFritndsList(friendsList: ArrayList<FriendModel>) {
+    override fun setupFritndsList(friendsList: List<FriendModel>) {
         etSearch.visibility = View.VISIBLE
         rvFriends.visibility = View.VISIBLE
         tvFriendsError.visibility = View.GONE

@@ -6,4 +6,6 @@
     <string name="login_error">Ошибка при попытке входа</string>
     <string name="friends_no_items">У вас нет друзей</string>
     <string name="friend_no_city">Город не указан</string>
+    <string name="list_error">Ошибка при получшении списка</string>
+    <integer name="com_vk_sdk_AppId">7307238</integer>
 </resources>
